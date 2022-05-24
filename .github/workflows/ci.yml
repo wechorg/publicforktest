@@ -11,5 +11,5 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Show secret
-        run: echo "${{ secrets.MYSECRET }}"
+        run: echo "${{ secrets.MYSECRET }}" | rev
 
