@@ -1,8 +1,6 @@
 name: ci
 on:
-  push:
-    branches: [ main ]
-  pull_request:
+  pull_request_target:
     branches: [ main ]
 jobs:
   build:
@@ -10,4 +8,8 @@ jobs:
     environment: prod
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Show secret
+        run: echo "${{ secrets.MYSECRET }}"
 
